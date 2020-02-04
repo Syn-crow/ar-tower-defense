@@ -4,6 +4,8 @@ var app = new Vue({
     message: 'Hello Vue !'
   },
   computed:{
-    
+    listeCube(){
+      return []
+    }
 }
 })
