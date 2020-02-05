@@ -62,16 +62,20 @@ class Ennemy {
       marker.appendChild(ennemy);
   }
   update(){
+    if(this.distance(this.x,this.y,this.path[this.pathIndex].x2,this.path[this.pathIndex].y2)<0.5){
+      this.pathIndex+=1;
+      if(this.pathIndex>this.path.length){
+        return true;
+      }
+    }
     const direction = this.getDirection();
     console.log(direction)
     this.x+=0.005*direction[0];
     this.y+=0.005*direction[1];
-    if(this.distance(this.x,this.y,this.path[this.pathIndex].x2,this.path[this.pathIndex].y2)<0.5){
-      this.pathIndex+=1;
-    }
     let ennemy = document.getElementById("ennemy"+this.id);
     ennemy.setAttribute('position', {x: this.x, y: 1.5, z: this.y});
     console.log(this.x,this.y)
+    return false;
   }
   distance(x1,y1,x2,y2){
     return Math.sqrt((x1-x2)**2+(y1-y2)**2);
@@ -104,8 +108,11 @@ listEnnemy.push(new Ennemy(path));
 
 function update(){
   requestAnimationFrame( update );
+  let reached = [];
   listEnnemy.forEach((ennemy)=>{
-    ennemy.update();
+    if(ennemy.update()){
+      reached.push
+    }
   })
 }
 update();
