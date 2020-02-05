@@ -9,13 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <a-scene embedded arjs="debugUIEnabled:false;">
-      <a-marker preset="hiro">
-      <a-box position="0 0.5 0" color="yellow"></a-box>
-      <a-box position="-2.5 0.5 0" width="6" color="#FFC65D"></a-box>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
+    <div id="app">
+      <a-scene embedded arjs="debugUIEnabled:false;">
+        <a-marker preset="hiro" >
+        <a-box v-for="cube in listCuve" position="0 0.5 0" :width="(cube.x2-cube.x1)/2" :depth="(cube.y2-cube.y1)/2" color="#FFC65D"></a-box>
+        </a-marker>
+        <a-entity camera></a-entity>
+      </a-scene>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
