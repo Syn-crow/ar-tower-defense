@@ -21,13 +21,24 @@
         let abox = document.createElement('a-entity');
         abox.setAttribute('geometry', {
           primitive: 'box',
-          depth: box.y2-box.y2,
+          depth: box.y2-box.y1,
           width: box.x2-box.x1
         });
-        abox.setAttribute('position', {x: (0.5-(box.x1+box.x2)/2), y: 0.5, z: (box.y1+box.y2)/2});
+        abox.setAttribute('position', {x: (-0.5+(box.x1+box.x2)/2), y: 0.5, z: (box.y1+box.y2)/2});
         //abox.setAttribute('width', (box.x2-box.x1));
         //abox.setAttribute('width', (box.y2-box.y2));
         marker.appendChild(abox);
+        let node= document.createElement('a-entity');
+        node.setAttribute('geometry', {
+          primitive: 'box',
+          depth: 1.2,
+          width: 1.2,
+          height: 1.2
+        });
+        node.setAttribute('position', {x: box.x1, y: 0.5, z: box.y1});
+        //abox.setAttribute('width', (box.x2-box.x1));
+        //abox.setAttribute('width', (box.y2-box.y2));
+        marker.appendChild(node);
       })
     </script> 
   
