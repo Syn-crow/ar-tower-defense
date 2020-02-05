@@ -9,31 +9,61 @@
   </head>
   <body>
     <a-scene embeddedar js="debugUIEnabled: false;">
-		
-	    <a-assets>
-			  <a-asset-item id="tower" src="models/tower/scene.gltf"></a-asset-item>
-			  <a-asset-item id="blue_cristal" src="models/blue_cristal/scene.gltf"></a-asset-item>
-			  <a-asset-item id="purple_cristal" src="models/purple_cristal/scene.gltf"></a-asset-item>
-			  <a-asset-item id="knight" src="models/knight/scene.gltf"></a-asset-item>
-	    </a-assets>
+      <a-assets>
+        <a-asset-item id="tower" src="models/tower/scene.gltf"></a-asset-item>
+        <a-asset-item
+          id="blue_cristal"
+          src="models/blue_cristal/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="purple_cristal"
+          src="models/purple_cristal/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item id="knight" src="models/knight/scene.gltf"></a-asset-item>
+      </a-assets>
 
-      <a-marker id="m_tower1" preset="kanji" registerevents="" material="" arjs-anchor="" arjs-hit-testing="">
-        <a-entity position="0 3 0" rotation="0 0 0" scale="0.1 0.1 0.1" gltf-model="#blue_cristal" animation="property: rotation; to: 0 360 0; easing: linear; loop: true; dur: 5000"></a-entity>
-        <a-entity position="0 0 0" rotation="0 0 0" scale="0.04 0.04 0.04" gltf-model="#tower"></a-entity>
+      <a-marker
+        id="m_tower1"
+        preset="kanji"
+        registerevents=""
+        material=""
+        arjs-anchor=""
+        arjs-hit-testing=""
+      >
+        <a-entity
+          position="0 3 0"
+          rotation="0 0 0"
+          scale="0.1 0.1 0.1"
+          gltf-model="#blue_cristal"
+          animation="property: rotation; to: 0 360 0; easing: linear; loop: true; dur: 5000"
+        ></a-entity>
+        <a-entity
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="0.04 0.04 0.04"
+          gltf-model="#tower"
+        ></a-entity>
       </a-marker>
 
       <!--<a-marker id="m_tower2" type="barcode" value="0" egisterevents="" material="" arjs-anchor="" arjs-hit-testing="">
         <a-entity position="0 3 0" rotation="0 0 0" scale="0.03 0.03 0.03" gltf-model="#purple_cristal" animation="property: rotation; to: 0 360 0; easing: linear; loop: true; dur: 5000"></a-entity>
         <a-entity position="0 0 0" rotation="0 0 0" scale="0.04 0.04 0.04" gltf-model="#tower"></a-entity>
       </a-marker>-->
-      
-      <a-marker preset="hiro" id="board" registerevents="" material="" arjs-anchor="" arjs-hit-testing="">
+
+      <a-marker
+        preset="hiro"
+        id="board"
+        registerevents=""
+        material=""
+        arjs-anchor=""
+        arjs-hit-testing=""
+      >
       </a-marker>
 
       <a-entity run=""></a-entity>
       <a-entity camera></a-entity>
     </a-scene>
     <script src="main.js"></script>
-	<script src="tower.js"></script>
+    <script src="tower.js"></script>
   </body>
 </html>
