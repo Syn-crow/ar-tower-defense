@@ -62,9 +62,9 @@ class Ennemy {
       marker.appendChild(ennemy);
   }
   update(){
-    if(this.distance(this.x,this.y,this.path[this.pathIndex].x2,this.path[this.pathIndex].y2)<0.5){
+    if(this.distance(this.x,this.y,this.path[this.pathIndex].x2,this.path[this.pathIndex].y2)<0.1){
       this.pathIndex+=1;
-      if(this.pathIndex>this.path.length){
+      if(this.pathIndex>this.path.length-1){
         return true;
       }
     }
@@ -103,16 +103,25 @@ class Ennemy {
 }
 Ennemy.id = 0;
 let listEnnemy = [];
-
+let hp = 100;
 listEnnemy.push(new Ennemy(path));
+
+function remove(){
+  document.getElementById('div-01')
+}
 
 function update(){
   requestAnimationFrame( update );
   let reached = [];
-  listEnnemy.forEach((ennemy)=>{
+  listEnnemy.forEach((ennemy, index)=>{
     if(ennemy.update()){
-      reached.push
+      reached.push(index);
     }
+  })
+  reached.forEach((ennemyReached)=>{
+    listEnnemy.splice(ennemyReached,1);
+    hp-=1
+    console.log(hp);
   })
 }
 update();
