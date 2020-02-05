@@ -50,6 +50,16 @@ class Ennemy {
     this.y = this.path[0].y1;
     this.id = Ennemy.id;
     Ennemy.id +=1;
+    
+    let ennemy = document.createElement('a-entity');
+      ennemy.setAttribute('geometry', {
+        primitive: 'sphere',
+        radius: "0.5"
+      });
+      ennemy.setAttribute('position', {x: this.x, y: 1.5, z: this.y});
+      ennemy.setAttribute('material', 'color', 'red');
+      ennemy.id = "ennemy"+this.id;
+      marker.appendChild(ennemy);
   }
   update(){
     const direction = this.getDirection();
@@ -65,5 +75,11 @@ class Ennemy {
   }
 }
 Ennemy.id = 0;
+let listEnnemy = [];
+
+listEnnemy.push(new Ennemy(path));
+
+
+
 
 makePath(path);
