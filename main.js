@@ -61,6 +61,9 @@ class Ennemy {
       ennemy.id = "ennemy"+this.id;
       marker.appendChild(ennemy);
   }
+  remove(){
+    document.getElementById("ennemy"+this.id).remove();
+  }
   update(){
     if(this.distance(this.x,this.y,this.path[this.pathIndex].x2,this.path[this.pathIndex].y2)<0.1){
       this.pathIndex+=1;
@@ -106,10 +109,6 @@ let listEnnemy = [];
 let hp = 100;
 listEnnemy.push(new Ennemy(path));
 
-function remove(){
-  document.getElementById('div-01')
-}
-
 function update(){
   requestAnimationFrame( update );
   let reached = [];
@@ -119,6 +118,7 @@ function update(){
     }
   })
   reached.forEach((ennemyReached)=>{
+    listEnnemy[ennemyReached].remove()
     listEnnemy.splice(ennemyReached,1);
     hp-=1
     console.log(hp);
