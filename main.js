@@ -1,4 +1,4 @@
-let marker = document.querySelector('a-marker');
+let marker = document.querySelector('#board');
 
 
 let path = [{"x1":0,"y1":0,"x2":4,"y2":0},{"x1":4,"y1":0,"x2":4,"y2":4},{"x1":4,"y1":4,"x2":6,"y2":4}];
