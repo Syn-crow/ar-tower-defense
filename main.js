@@ -64,8 +64,8 @@ class Ennemy {
   update(){
     const direction = this.getDirection();
     console.log(direction)
-    this.x+=0.1*direction[0];
-    this.y+=0.1*direction[1];
+    this.x+=0.005*direction[0];
+    this.y+=0.005*direction[1];
     if(this.distance(this.x,this.y,this.path[this.pathIndex].x2,this.path[this.pathIndex].y2)<0.5){
       this.pathIndex+=1;
     }
@@ -77,22 +77,22 @@ class Ennemy {
     return Math.sqrt((x1-x2)**2+(y1-y2)**2);
   }
   getDirection(){
-    const directionY;
-    const directionX;
+    let directionY;
+    let directionX;
     
     const dx = this.path[this.pathIndex].x1-this.path[this.pathIndex].x2;
     if(dx!=0){
-      const directionX = dx/Math.abs(dx);
+      directionX = -dx/Math.abs(dx);
     }
     else{
-      const directionX = 0;
+      directionX = 0;
     }
     const dy=this.path[this.pathIndex].y1-this.path[this.pathIndex].y2
     if(dy!=0){
-      const directionY = dy/Math.abs(dy);
+      directionY = -dy/Math.abs(dy);
     }
     else{
-      const directionY = 0;
+      directionY = 0;
     }
     return [directionX,directionY];
   }
