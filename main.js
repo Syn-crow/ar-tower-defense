@@ -63,22 +63,37 @@ class Ennemy {
   }
   update(){
     const direction = this.getDirection();
-    this.x+=0.5*direction[0];
-    this.y+=0.5*direction[1];
+    console.log(direction)
+    this.x+=0.1*direction[0];
+    this.y+=0.1*direction[1];
     if(this.distance(this.x,this.y,this.path[this.pathIndex].x2,this.path[this.pathIndex].y2)<0.5){
       this.pathIndex+=1;
     }
     let ennemy = document.getElementById("ennemy"+this.id);
     ennemy.setAttribute('position', {x: this.x, y: 1.5, z: this.y});
+    console.log(this.x,this.y)
   }
   distance(x1,y1,x2,y2){
     return Math.sqrt((x1-x2)**2+(y1-y2)**2);
   }
   getDirection(){
-    const directionX = ((this.path[this.pathIndex].x1-this.path[this.pathIndex].x2)/
-                        Math.abs(this.path[this.pathIndex].x1-this.path[this.pathIndex].x2));
-    const directionY = ((this.path[this.pathIndex].y1-this.path[this.pathIndex].y2)/
-                        Math.abs(this.path[this.pathIndex].y1-this.path[this.pathIndex].y2));
+    const directionY;
+    const directionX;
+    
+    const dx = this.path[this.pathIndex].x1-this.path[this.pathIndex].x2;
+    if(dx!=0){
+      const directionX = dx/Math.abs(dx);
+    }
+    else{
+      const directionX = 0;
+    }
+    const dy=this.path[this.pathIndex].y1-this.path[this.pathIndex].y2
+    if(dy!=0){
+      const directionY = dy/Math.abs(dy);
+    }
+    else{
+      const directionY = 0;
+    }
     return [directionX,directionY];
   }
 }
@@ -93,7 +108,7 @@ function update(){
     ennemy.update();
   })
 }
-//update();
+update();
 
 
 makePath(path);
