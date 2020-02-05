@@ -7,14 +7,6 @@
     <script src="https://aframe.io/releases/1.0.2/aframe.min.js"></script>
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-     <script>
-      let path = [{"x1":0,"y1":0,"x2":4,"y2":0},{"x1":4,"y1":0,"x2":4,"y2":4},{"x1":4,"y1":4,"x2":6,"y2":4}];
-      path.forEach((box)=>{
-        let abox = document.createElement('abox');
-        abox.setAttribute('position', {x: (0.5-(box.x1+box.x2)/2), y: 0.5, z: (box.y1+box.y2)/2});
-        sceneEl.appendChild(abox);
-      })
-    </script> 
   </head>
   <body>
     <a-scene embedded arjs="debugUIEnabled:false;">
@@ -26,6 +18,16 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
+    <script>
+      let path = [{"x1":0,"y1":0,"x2":4,"y2":0},{"x1":4,"y1":0,"x2":4,"y2":4},{"x1":4,"y1":4,"x2":6,"y2":4}];
+      path.forEach((box)=>{
+        let abox = document.createElement('abox');
+        abox.setAttribute('position', {x: (0.5-(box.x1+box.x2)/2), y: 0.5, z: (box.y1+box.y2)/2});
+        abox.setAttribute('width', (box.x2-box.x1));
+        abox.setAttribute('width', (box.y2-box.y2));
+        sceneEl.appendChild(abox);
+      })
+    </script> 
   
   </body>
 </html>
