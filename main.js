@@ -42,13 +42,14 @@ function makePath(path){
       marker.appendChild(finalNode); 
 }
 class Ennemy {
-  static id = 0;
   constructor(path) {
     this.path = path;
     this.pathIndex = 0;
     this.hp = 100;
     this.x = this.path[0].x1;
     this.y = this.path[0].y1;
+    this.id = Ennemy.id;
+    Ennemy.id +=1;
   }
   update(){
     const direction = this.getDirection();
@@ -63,5 +64,6 @@ class Ennemy {
     return [directionX,directionY];
   }
 }
+Ennemy.id = 0;
 
 makePath(path);
