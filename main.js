@@ -4,7 +4,9 @@ let marker = document.querySelector('a-marker');
 let path = [{"x1":0,"y1":0,"x2":4,"y2":0},{"x1":4,"y1":0,"x2":4,"y2":4},{"x1":4,"y1":4,"x2":6,"y2":4}];
 
 /*
-takes a path structure
+takes a path structured like 
+[{"x1":0,"y1":0,"x2":4,"y2":0},{"x1":4,"y1":0,"x2":4,"y2":4},{"x1":4,"y1":4,"x2":6,"y2":4}]
+and draw the path the ennemy will be walking on
 */
 function makePath(path){
   path.forEach((box)=>{
@@ -39,3 +41,11 @@ function makePath(path){
       finalNode.setAttribute('material', 'color', 'red');
       marker.appendChild(finalNode); 
 }
+/*
+function that gives new position to ennemy based on previous one 
+*/
+function goAlongThePath(){
+  
+}
+
+makePath(path);
