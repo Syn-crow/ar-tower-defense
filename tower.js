@@ -9,7 +9,7 @@
                     
                     marker.addEventListener('markerFound', function() {
                         markerVisible[ marker.id ] = true;
-                        console.log("found");
+                        console.log("found " + marker.id);
                     });
             
                     marker.addEventListener('markerLost', function() {
@@ -24,7 +24,7 @@
                 {
                     this.m_tower1 = document.querySelector("#m_tower1");
                     this.m_tower2 = document.querySelector("#m_tower2");
-                    this.m_target = listEnnemy[0];
+                    this.m_target = document.querySelector("#board");
                     this.posTower1 = new THREE.Vector3();
                     this.posTower2 = new THREE.Vector3();
                     this.posTarget = new THREE.Vector3();
@@ -54,13 +54,16 @@
                 {   
                     if ( markerVisible["m_tower1"] && markerVisible["board"] )
                     {   
-                        console.log("Fire !")
                         this.m_tower1.object3D.translateY(3.1);
-                        this.m_target.object3D.translateY(0.4);
+                        this.m_target.object3D.translateX(listEnnemy[0].x);
+                        this.m_target.object3D.translateY(1.4);
+                        this.m_target.object3D.translateZ(listEnnemy[0].y);
                         this.m_tower1.object3D.getWorldPosition(this.posTower1); 
                         this.m_target.object3D.getWorldPosition(this.posTarget);
                         this.m_tower1.object3D.translateY(-3.1);
-                        this.m_target.object3D.translateY(-0.4);
+                        this.m_target.object3D.translateX(-listEnnemy[0].x);
+                        this.m_target.object3D.translateY(-1.4);
+                        this.m_target.object3D.translateZ(-listEnnemy[0].y);
                         this.geometry1.vertices[0] = this.posTower1;
                         this.geometry1.vertices[1] = this.posTarget;
                         this.geometry1.verticesNeedUpdate = true;

@@ -72,12 +72,12 @@ class Ennemy {
       }
     }
     const direction = this.getDirection();
-    console.log(direction)
+    //console.log(direction)
     this.x+=0.005*direction[0];
     this.y+=0.005*direction[1];
     let ennemy = document.getElementById("ennemy"+this.id);
     ennemy.setAttribute('position', {x: this.x, y: 1.5, z: this.y});
-    console.log(this.x,this.y)
+    //console.log(this.x,this.y)
     return false;
   }
   distance(x1,y1,x2,y2){
