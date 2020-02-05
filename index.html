@@ -12,11 +12,35 @@
     <div id="app">
       <a-scene embedded arjs="debugUIEnabled:false;">
         <a-marker preset="hiro" >
+        <a-box position="0 0.5 0" color="yellow"></a-box>
         <a-box v-for="cube in listCuve" position="0 0.5 0" :width="(cube.x2-cube.x1)/2" :depth="(cube.y2-cube.y1)/2" color="#FFC65D"></a-box>
         </a-marker>
         <a-entity camera></a-entity>
       </a-scene>
     </div>
-    <script src="main.js"></script>
+    <script>
+      Vue.config.ignoredElements = [
+        'a-scene',
+        'a-assets',
+        'a-sky',
+        'a-camera',
+        'a-cursor',
+        'a-animation',
+        'a-entity',
+        'a-box',
+        'a-marker'
+      ]
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue !'
+        },
+        computed:{
+          listCube(){
+            return [{"x1":0,"y1":0,"x2":4,"y2":0},{"x1":4,"y1":0,"x2":4,"y2":4},{"x1":4,"y1":4,"x2":6,"y2":4}]
+          }
+      }
+      })
+    </script>
   </body>
 </html>
