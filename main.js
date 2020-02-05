@@ -41,11 +41,27 @@ function makePath(path){
       finalNode.setAttribute('material', 'color', 'red');
       marker.appendChild(finalNode); 
 }
-/*
-function that gives new position to ennemy based on previous one 
-*/
-function goAlongThePath(){
-  
+class Ennemy {
+  static id = 0;
+  constructor(path) {
+    this.path = path;
+    this.pathIndex = 0;
+    this.hp = 100;
+    this.x = this.path[0].x1;
+    this.y = this.path[0].y1;
+  }
+  update(){
+    const direction = this.getDirection();
+    this.x+=0.5*direction[0];
+    this.y+=0.5*direction[1];
+  }
+  getDirection(){
+    const directionX = ((this.path[this.pathIndex].x1-this.path[this.pathIndex].x2)/
+                        Math.abs(this.path[this.pathIndex].x1-this.path[this.pathIndex].x2));
+    const directionY = ((this.path[this.pathIndex].y1-this.path[this.pathIndex].y2)/
+                        Math.abs(this.path[this.pathIndex].y1-this.path[this.pathIndex].y2));
+    return [directionX,directionY];
+  }
 }
 
 makePath(path);
